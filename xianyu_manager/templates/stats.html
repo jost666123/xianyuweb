@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - 闲鱼选品管理{% endblock %}
+
+{% block content %}
+<header class="page-header">
+    <h1>{{ title }}</h1>
+    <p>这里将展示商品的各项统计数据。</p>
+</header>
+
+<section class="statistics-overview">
+    <h2>数据总览</h2>
+    {# Placeholder for actual stats data #}
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h4>总商品数</h4>
+            <p class="stat-value">{{ total_products | default(0) }}</p>
+        </div>
+        <div class="stat-card">
+            <h4>总预期利润</h4>
+            <p class="stat-value">¥{{ "%.2f"|format(total_profit_sum | default(0.00)) }}</p>
+        </div>
+        <div class="stat-card">
+            <h4>总曝光量</h4>
+            <p class="stat-value">{{ total_exposure_sum | default(0) }}</p>
+        </div>
+        <div class="stat-card">
+            <h4>总出单数</h4>
+            <p class="stat-value">{{ total_sales_sum | default(0) }}</p>
+        </div>
+    </div>
+    {% if total_products == 0 %}
+    <p>暂无商品数据，无法进行统计。请先在管理后台添加商品。</p>
+    {% else %}
+    <p>以上为当前所有商品的基础数据统计。</p>
+    {% endif %}
+</section>
+
+{# Placeholder for charts if we add them later
+<section class="charts">
+    <h2>图表分析</h2>
+    <div id="profitChartContainer">
+        <canvas id="profitChart"></canvas>
+    </div>
+</section>
+#}
+{% endblock %}
+
+{% block scripts_extra %}
+{# Example for Chart.js if we use it later
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Placeholder for chart initialization
+    // const ctx = document.getElementById('profitChart')?.getContext('2d');
+    // if (ctx) {
+    //     const profitChart = new Chart(ctx, {
+    //         type: 'bar', // or 'line', 'pie', etc.
+    //         data: {
+    //             labels: ['商品A', '商品B', '商品C'],
+    //             datasets: [{
+    //                 label: '利润',
+    //                 data: [120, 190, 300],
+    //                 backgroundColor: 'rgba(0, 123, 255, 0.5)',
+    //                 borderColor: 'rgba(0, 123, 255, 1)',
+    //                 borderWidth: 1
+    //             }]
+    //         },
+    //         options: {
+    //             responsive: true,
+    //             scales: {
+    //                 y: {
+    //                     beginAtZero: true
+    //                 }
+    //             }
+    //         }
+    //     });
+    // }
+</script>
+#}
+{% endblock %}
