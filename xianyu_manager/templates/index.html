@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - 闲鱼选品管理{% endblock %}
+
+{% block content %}
+<header class="page-header">
+    <h1>欢迎来到闲鱼选品助手</h1>
+    <p>在这里发现和管理您的潜力爆款商品。</p>
+</header>
+
+<section class="product-grid">
+    <h2>精选商品</h2>
+    {% if products %}
+        <div class="products-container">
+            {% for product in products %}
+            <div class="product-card">
+                {% if product.image_url %}
+                    <img src="{{ product.image_url if product.image_url.startswith('http') else url_for('static', filename='uploads/' + product.image_url) }}" alt="{{ product.title }}" class="product-image">
+                {% else %}
+                    <img src="https://via.placeholder.com/300x200.png?text=No+Image" alt="No image available" class="product-image">
+                {% endif %}
+                <h3>{{ product.title }}</h3>
+                <p class="description">{{ product.description | truncate(100) }}</p>
+                <div class="price-info">
+                    <p>拿货价: <span class="price">¥{{ product.purchase_price }}</span></p>
+                    <p>零售价: <span class="price">¥{{ product.selling_price }}</span></p>
+                </div>
+                <p class="profit">预计利润: <span class="price highlight">¥{{ product.profit if product.profit is not none else (product.selling_price - product.purchase_price) }}</span></p>
+                <div class="product-links">
+                    {% if product.purchase_url %}<a href="{{ product.purchase_url }}" target="_blank" class="btn-link">拿货地址</a>{% endif %}
+                    {% if product.selling_url %}<a href="{{ product.selling_url }}" target="_blank" class="btn-link">销售链接</a>{% endif %}
+                </div>
+                 <small class="meta-info">曝光: {{ product.exposure or 0 }} | 销量: {{ product.sales_count or 0 }}</small>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>目前还没有商品。请管理员在后台添加。</p>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,537 @@
+/* Basic Reset & Font */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    background-color: #f4f4f8; /* Light grey background, common in Apple UIs */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(248, 248, 248, 0.8); /* Translucent white, like macOS menu bar */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #1d1d1f; /* Apple's dark grey text */
+    text-decoration: none;
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar-nav li {
+    margin-left: 20px;
+}
+
+.navbar-nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav a:hover,
+.navbar-nav li.active a { /* Target the <a> tag within the <li> with class 'active' */
+    color: #007aff; /* Apple blue */
+    font-weight: 600; /* Make active link slightly bolder */
+}
+
+/* Page Content */
+.page-content {
+    flex-grow: 1;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.page-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.page-header h1 {
+    font-size: 2.2em;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 0.2em;
+}
+
+.page-header p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f8f8;
+    border-top: 1px solid #e0e0e0;
+    padding: 20px 0;
+    text-align: center;
+    color: #777;
+    font-size: 0.9em;
+    margin-top: auto; /* Pushes footer to bottom */
+}
+
+/* Flash Messages */
+.flash-messages {
+    margin-bottom: 20px;
+}
+.alert {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 6px; /* Rounded corners */
+    font-weight: 500;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: #007aff;
+    color: white;
+    border-color: #007aff;
+}
+.btn-primary:hover {
+    background-color: #005ecb;
+    border-color: #005ecb;
+}
+
+.btn-success {
+    background-color: #34c759; /* Apple green */
+    color: white;
+    border-color: #34c759;
+}
+.btn-success:hover {
+    background-color: #2ca349;
+    border-color: #2ca349;
+}
+
+.btn-link {
+    color: #007aff;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+
+/* Product Grid / Cards (for index.html) */
+.product-grid h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #1d1d1f;
+}
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 12px; /* More pronounced rounding */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 20px;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.product-card .product-image {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Cover to fill, crop if necessary */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #f0f0f0; /* Placeholder bg */
+}
+
+.product-card h3 {
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1d1d1f;
+}
+
+.product-card .description {
+    font-size: 0.9em;
+    color: #555;
+    flex-grow: 1; /* Allows description to take available space */
+    margin-bottom: 10px;
+}
+
+.product-card .price-info {
+    font-size: 0.95em;
+    color: #333;
+    margin-bottom: 5px;
+}
+.product-card .price-info .price {
+    font-weight: 600;
+}
+.product-card .profit .price.highlight {
+    color: #34c759; /* Apple green for profit */
+    font-weight: bold;
+}
+
+.product-card .product-links {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.product-card .product-links a {
+    margin-right: 10px;
+}
+.product-card .meta-info {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: auto; /* Pushes meta to bottom of card */
+}
+
+/* Form Container (used in product_form.html) */
+.form-container {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+/* Form validation styles */
+.form-control.is-invalid,
+input.is-invalid,
+textarea.is-invalid,
+select.is-invalid {
+    border-color: #dc3545 !important; /* Bootstrap's danger color */
+}
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875em;
+    color: #dc3545;
+}
+.form-row {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 20px;
+    margin-bottom: 0; /* Reset default margin as form-group has it */
+}
+.form-row .form-group {
+    flex: 1 1 calc(50% - 10px); /* Default to two columns, adjust basis for gap */
+    min-width: 250px; /* Minimum width before wrapping */
+}
+/* If a form group is explicitly meant to take full width within a row context, or by default */
+.form-group.full-width {
+    flex-basis: 100%;
+}
+
+
+/* Admin Dashboard Specifics */
+.admin-actions {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.admin-actions h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.product-management table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px; /* Applied to container if table itself can't have it well */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    /* overflow: hidden; For rounded corners on table, better on a wrapper */
+}
+.table-responsive { /* Wrapper for table for horizontal scrolling on small screens */
+    overflow-x: auto;
+    border-radius: 8px; /* Apply shadow and radius to this wrapper */
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+
+.product-management th, .product-management td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eaeaea; /* Slightly softer border */
+    vertical-align: middle;
+}
+
+.product-management th {
+    background-color: #f7f7f7; /* Lighter grey for header */
+    font-weight: 500; /* Less heavy font weight */
+    color: #333;
+    font-size: 0.9em;
+    text-transform: uppercase; /* Optional: for a more "pro" look */
+    letter-spacing: 0.5px;
+}
+
+.product-management tbody tr:hover {
+    background-color: #f0f8ff; /* Alice blue, a very light blue for hover */
+}
+.product-management tbody tr:last-child td {
+    border-bottom: none; /* Remove border for last row for cleaner look if container has border */
+}
+
+
+.product-management td .btn {
+    margin-right: 5px;
+    padding: 6px 12px; /* Slightly larger padding for better clickability */
+    font-size: 0.85em; /* Smaller font for action buttons in table */
+    border-radius: 5px;
+}
+.btn-edit { /* Specific styling for edit button if needed */
+    background-color: #ffc107; /* Amber */
+    color: #212529;
+    border-color: #ffc107;
+}
+.btn-edit:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+.btn-delete { /* Specific styling for delete button */
+    background-color: #dc3545; /* Red */
+    color: white;
+    border-color: #dc3545;
+}
+.btn-delete:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.admin-thumb {
+    max-width: 60px;
+    max-height: 40px;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 1px solid #eee;
+}
+.no-image-placeholder {
+    font-size: 0.8em;
+    color: #999;
+    display: inline-block;
+    width: 60px; /* Match approx thumb size */
+    text-align: center;
+}
+td.profit {
+    font-weight: bold;
+    color: #28a745; /* Green for profit */
+}
+td.profit.negative { /* If profit can be negative */
+    color: #dc3545; /* Red */
+}
+
+/* Secondary button style (e.g., for "Cancel" in forms) */
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border-color: #6c757d;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+
+/* Stats Page Specifics */
+.statistics-overview h2, .charts h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #1d1d1f;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.stat-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+}
+.stat-card h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #555;
+    font-weight: 500;
+}
+.stat-card .stat-value {
+    font-size: 2em;
+    font-weight: 600;
+    color: #007aff; /* Apple blue */
+    margin-bottom: 0;
+}
+
+/* Login Form (from admin_login.html, but good to have in main CSS too) */
+.login-container {
+    max-width: 420px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #fff; /* White background for the form box */
+    border-radius: 12px; /* Softer, more Apple-like radius */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #1d1d1f;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group input[type="url"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc; /* Slightly more visible border */
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="url"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #007aff; /* Apple blue focus */
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2); /* Subtle focus ring */
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar-nav {
+        margin-top: 10px;
+        flex-direction: column;
+        width: 100%;
+    }
+    .navbar-nav li {
+        margin-left: 0;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+    .navbar-nav a {
+        display: block;
+        padding: 8px 0;
+    }
+    .products-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Favicon - just a note, actual favicon needs to be file */
+/* Add a placeholder for favicon if you want to include it via CSS, though <link> is better */
+/* Example: Add a default favicon.ico to static folder */
+/* Ensure favicon.ico is present in static/ */
